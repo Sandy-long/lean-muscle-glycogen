@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>肌糖原合成</title>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({ startOnLoad: true });
+  </script>
+  <style>
+    :root {
+      --mermaid-bg-color: transparent; /* Mermaid 内部节点背景透明 */
+    }
+
+    body {
+      font-family: "Microsoft YaHei", sans-serif;
+      margin: 0;                    /* 取消浏览器默认 margin */
+      padding: 0 20px 20px 20px;    /* 上方不留白，左右和底部保留 20px */
+      background: #f0f0f0;
+    }
+
+    h1 {
+      font-weight: 700;
+      font-size: 2.4rem;
+      line-height: 1.2;
+      margin: 0;       /* 取消默认上下 margin */
+      text-align: center;
+      color: #444;
+    }
+
+    .header-bg {
+      background-color: #f7f7f7;
+      border-bottom: 4px solid #3498db;
+      width: 100vw;
+      margin-left: calc(-50vw + 50%);
+      padding: 1.8rem 1rem;  /* 根据需求可再调小，例如 1rem 0.5rem */
+      box-sizing: border-box;
+    }
+
+    .subtitle {
+      max-width: 800px;
+      margin: 1rem auto 3rem auto;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #333;
+      text-align: left;
+      font-weight: 400;
+    }
+
+    .mermaid {
+      background: transparent;     /* 容器背景透明 */
+      border: none;                /* 去掉边框 */
+      border-radius: 8px;
+      padding: 20px;
+      margin: 40px auto;
+      max-width: 1200px;
+      text-align: center;
+    }
+
+    .summary-references {
+      max-width: 800px;
+      margin: 40px auto 40px auto;
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #333;
+      text-align: left;
+      background: #f7f7f7;
+      padding: 20px 30px;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      border-left: 6px solid #1e90ff;
+      font-family: "Microsoft YaHei", sans-serif, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .summary-references strong {
+      display: block;
+      font-size: 1.2rem;
+      margin-bottom: 0.6em;
+    }
+
+    .references p {
+      margin: 0.4em 0;
+      font-size: 1rem;
+      color: #555;
+    }
+
+    .references ul {
+      padding-left: 1.4em;
+      margin: 0.4em 0;
+      color: #555;
+      font-size: 1rem;
+    }
+
+    /* 只加粗，不变色 */
+    .highlight {
+      font-weight: bold;
+      color: inherit;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header-bg">
+    <h1>肌糖原合成</h1>
+  </div>
+
+  <p class="subtitle">
+    肌糖原合成是葡萄糖通过GLUT4转运蛋白进入肌肉细胞后，通过一系列酶促反应将葡萄糖转化为糖原以便储存的过程。以下流程图清晰展示了从葡萄糖进入肌肉细胞到糖原形成的关键步骤和能量变化。
+  </p>
+
+  <div class="mermaid">
+flowchart TD
+  
+    L1[🧱 糖原合成路径（在细胞质）]
+    L1 --> L2[葡萄糖通过GLUT4进入肌肉细胞]
+    L2 --> L2a[葡萄糖 + ATP（提供一个磷酸集团）+ 酶（己糖激酶 ）]
+    L2a --> L2b[葡萄糖-6-磷酸（G6P）+ ADP，ΔG ≈ −30.5 kJ/mol]
+    L2b -.->|磷酸位置转移<br>磷酸葡萄糖变位酶<br>G6P的C1位加磷酸基团| L2d[葡萄糖-1,6-双磷酸（短暂出现） + 非磷酸化的丝氨酸残基]
+    L2d --> L2f[葡萄糖-1-磷酸（G1P）+ 磷酸化的丝氨酸残基（酶恢复活性）]
+    L2f --> L2g[葡萄糖-1-磷酸 + UTP（三磷酸尿苷）]
+    L2g --> |UDP-葡萄糖焦磷酸化酶|L2h[UDP-葡萄糖 ， ΔG ≈ −19 kJ/mol<br>+焦磷酸（PPi→ 2Pi），ΔG ≈ −33 kJ/mol]
+    L2h -.->|糖原链延长| L2i[UDP-葡萄糖+ 葡萄糖n]
+    L2i -.->|糖原合酶|L2k[葡萄糖ₙ₊₁  +  UDP] 
+    L2k -.->|分支酶切割葡萄糖ₙ₊₁|L2m[葡萄糖ₙ₋ₘ  +  葡萄糖ₘ]
+    L2m -.->|分支酶将短链连接至C6羟基，形成α-1,6键|L2n[有分支的糖原链]
+    L2n-.->|每kg肌肉含约10-15g糖原，正常成人约300-500g糖原总量，运动员甚至可达40g/kg<br>每个肌肉细胞可储存约 2,000-3,000 个 β 颗糖原颗粒
+|L2o[糖原]
+    L2o-.->|糖原磷酸化酶|L2p[糖原分解供能]
+  </div>
+
+  <div class="summary-references">
+    <strong>总结：肌糖原是储存在肌肉中的葡萄糖聚合物，主要用于局部供能，不能用于维持血糖</strong><br>
+    1. 肌糖原储存在<span class="highlight">骨骼肌细胞</span>，主要分布在肌原纤维之间、线粒体周围和肌浆中。<br>
+    2. 肌糖原的主要作用是<span class="highlight">为肌肉提供局部能量</span>，特别是在剧烈运动或缺氧条件下（如无氧酵解）。<br>
+    3. 与肝糖原不同，肌肉细胞缺乏<span class="highlight">葡萄糖-6-磷酸酶</span>，所以<span class="highlight">肌糖原不能转化为葡萄糖释放入血。</span><br>
+    4. 肌肉组织总糖原量比肝脏多（因为肌肉量大），但<span class="highlight">单位质量含量较低</span>，约为1–2% 的湿重。<br>
+    5. 肌糖原以<span class="highlight">β颗粒</span>为主（直径约 20–30 nm），颗粒数多但相对较小。<br>
+    6. 运动、肾上腺素和钙离子等会<span class="highlight">激活糖原磷酸化酶</span>，加速肌糖原分解供能。<br><br>
+    <strong>参考文献：</strong>
+    <ul>
+       <li>Glycogen metabolism and structure: A review. <em>Carbohydrate Polymers</em>, 2024.</li>
+    <li>A century of exercise physiology: Key concepts in regulation of glycogen metabolism in skeletal muscle. <em>Journal of Physiology</em>, 2022.</li>
+    <li class="book">Berg, J. M., Tymoczko, J. L., & Stryer, L. <em>Biochemistry</em> (8th ed.). W. H. Freeman, 2015. Chapter: Glycogen Metabolism.</li>
+    </ul>
+  </div>
+
+</body>
+</html>
